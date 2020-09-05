@@ -26,7 +26,7 @@ function App() {
         .catch(err => err)
     },[])
   return (
-    <Container maxWidth="sm" style={{ backgroundColor: '#cfe8fc', height: '100vh' }}>
+    <Container maxWidth="sm">
   <PostsContext.Provider value={[posts, setPosts]}>
     <Router>
       <div>
