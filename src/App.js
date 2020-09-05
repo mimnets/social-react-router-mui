@@ -10,7 +10,7 @@ import Posts from './components/Posts/Posts';
 import Header from './components/Header/Header';
 import Home from './components/Home/Home';
 import Container from '@material-ui/core/Container';
-import { Typography } from '@material-ui/core';
+
 
 function App() {
   return (
