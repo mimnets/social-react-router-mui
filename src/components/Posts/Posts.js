@@ -1,15 +1,19 @@
-import React, { useContext } from 'react';
-import { PostsContext } from '../../App';
+import React from 'react';
+import { useHistory } from 'react-router-dom';
 
-const Posts = () => {
-const [posts, setPosts] = useContext(PostsContext); 
-// const tl = posts.title;
+const Posts = (props) => {
+    const {title,id} = props.post;
+    const history = useHistory()
+    console.log(history);
+    const handleClick = (postId) =>{
+        const url = `/post/${postId}`;
+        history.push(url);
+    }
+    
     return (
         <div>
-            <h1>This is posts section :{posts.length}</h1>
-            {
-                posts.map(pt => <h1>{pt.title.toUpperCase()}</h1>)
-            }
+            <h1>{title}</h1>
+            <button onClick={() => handleClick(id)}>See Details</button>
         </div>
     );
 };

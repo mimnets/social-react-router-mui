@@ -10,6 +10,7 @@ import Posts from './components/Posts/Posts';
 import Header from './components/Header/Header';
 import Home from './components/Home/Home';
 import Container from '@material-ui/core/Container';
+import PostDetail from './components/PostDetail/PostDetail';
 
 export const PostsContext = createContext()
 
@@ -47,6 +48,9 @@ function App() {
         {/* A <Switch> looks through its children <Route>s and
             renders the first one that matches the current URL. */}
         <Switch>
+        <Route path="/post/:postId">
+            <PostDetail />
+          </Route>
           <Route path="/Posts">
             <Posts />
           </Route>
