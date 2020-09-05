@@ -10,7 +10,7 @@ const [posts, setPosts] = useContext(PostsContext);
             <h1>This is posts section :{posts.length}</h1>
             {
                 // posts.map(pt => <Post post={pt}></Post>)
-                posts.map(pt => <h1>{pt.title}</h1>)
+                posts.map(pt => <h1>{pt.title.toUpperCase()}</h1>)
             }
         </div>
     );
