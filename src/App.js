@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect, createContext } from 'react';
 import './App.css';
 import {
   BrowserRouter as Router,
@@ -11,15 +11,27 @@ import Header from './components/Header/Header';
 import Home from './components/Home/Home';
 import Container from '@material-ui/core/Container';
 
+export const PostsContext = createContext()
 
 function App() {
+    
+    const [posts, setPosts] = useState([])
+    
+    const url = 'https://jsonplaceholder.typicode.com/posts'
+
+    useEffect(() => {
+        fetch(url)
+        .then(res => res.json())
+        .then(data => setPosts(data))
+        .catch(err => err)
+    },[])
   return (
     <Container maxWidth="sm" style={{ backgroundColor: '#cfe8fc', height: '100vh' }}>
-    
+  <PostsContext.Provider value={[posts, setPosts]}>
     <Router>
       <div>
         <nav>
-          <ul style={{textStyle: 'none'}}>
+          <ul>
             <li>
               <Link to="/">Home</Link>
             </li>
@@ -47,6 +59,7 @@ function App() {
         </Switch>
       </div>
     </Router>
+    </PostsContext.Provider>
     </Container>
   );
 }
