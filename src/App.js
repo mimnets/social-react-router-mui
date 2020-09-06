@@ -11,6 +11,7 @@ import Header from './components/Header/Header';
 import Home from './components/Home/Home';
 import Container from '@material-ui/core/Container';
 import PostDetail from './components/PostDetail/PostDetail';
+import { makeStyles, AppBar, Toolbar, IconButton, Typography, Button } from '@material-ui/core';
 
 export const PostsContext = createContext()
 
@@ -26,21 +27,35 @@ function App() {
         .then(data => setPosts(data))
         .catch(err => err)
     },[])
+
+    const useStyles = makeStyles((theme) => ({
+      root: {
+        flexGrow: 1,
+      },
+      menuButton: {
+        marginRight: theme.spacing(2),
+      },
+      title: {
+        flexGrow: 1,
+      },
+    }));
+    const classes = useStyles();
   return (
     <Container maxWidth="sm" style={{ backgroundColor: '#6699CC', border: '1px solid gray', borderRadius:'20px'}}>
+
   <PostsContext.Provider value={[posts, setPosts]}> 
     <Router>
-      <div>
-        <nav>
-          <ul>
-            <li>
-              <Link to="/">Home</Link>
-            </li>
-          </ul>
-        </nav>
 
-        {/* A <Switch> looks through its children <Route>s and
-            renders the first one that matches the current URL. */}
+    <div className={classes.root}>
+      <AppBar position="static">
+        <Toolbar>
+          <Typography variant="h6" className={classes.title}>
+          <Button color="inherit"><Link to="/" style={{color:"inherit", textDecoration: 'none'}}>Home</Link></Button>
+          </Typography>
+        </Toolbar>
+      </AppBar>
+    </div>
+      <div>
         <Switch>
         <Route path="/post/:postId">
             <PostDetail />
