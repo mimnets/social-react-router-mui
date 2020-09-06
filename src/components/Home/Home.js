@@ -8,7 +8,6 @@ const Home = () => {
     
     return (
         <div>
-            <h1>This is home</h1>
             {
                 posts.map(pt => <Posts post={pt}></Posts>)
             }

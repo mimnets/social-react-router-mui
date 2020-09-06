@@ -27,20 +27,14 @@ function App() {
         .catch(err => err)
     },[])
   return (
-    <Container maxWidth="sm">
-  <PostsContext.Provider value={[posts, setPosts]}>
+    <Container maxWidth="sm" style={{ backgroundColor: '#6699CC', border: '1px solid gray', borderRadius:'20px'}}>
+  <PostsContext.Provider value={[posts, setPosts]}> 
     <Router>
       <div>
         <nav>
           <ul>
             <li>
               <Link to="/">Home</Link>
-            </li>
-            <li>
-              <Link to="/about">About</Link>
-            </li>
-            <li>
-              <Link to="/users">Users</Link>
             </li>
           </ul>
         </nav>

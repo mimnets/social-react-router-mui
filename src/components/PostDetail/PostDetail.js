@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom';
 import { useState } from 'react';
 import { useEffect } from 'react';
 import Comments from '../Comments/Comments';
+import { makeStyles, Card, CardHeader, CardContent, Typography } from '@material-ui/core';
 
 const PostDetail = () => {
     
@@ -27,15 +28,49 @@ const PostDetail = () => {
         .then(data => setComments(data))
     },[])
      
+    const useStyles = makeStyles((theme) => ({
+        root: {
+          maxWidth: 600,
+        },
+        media: {
+          height: 0,
+          paddingTop: '56.25%', // 16:9
+        },
+        expand: {
+          transform: 'rotate(0deg)',
+          marginLeft: 'auto',
+          transition: theme.transitions.create('transform', {
+            duration: theme.transitions.duration.shortest,
+          }),
+        },
+        expandOpen: {
+          transform: 'rotate(180deg)',
+        },
+        avatar: {
+          backgroundColor: 'red',
+        },
+      }));
+
+      const classes = useStyles();
+
     return (
-        <div>
-            <h2>{post.title}</h2>
-            <p>{post.body}</p>
+
+        <Card className={classes.root}>
+      <CardHeader
+        title={post.title}
+      />
+      <CardContent>
+        <Typography variant="body2" color="textSecondary" component="p">
+        {post.body}
+        </Typography>
+        <Typography>
             {
                 comments.map(com => <Comments comments = {com}></Comments>)
             }
+        </Typography>
             
-        </div>
+      </CardContent>
+    </Card> 
     );
 };
 
