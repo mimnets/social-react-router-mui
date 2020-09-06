@@ -52,11 +52,7 @@ const Comments = (props) => {
             }
           </Avatar>
         }
-        action={
-          <IconButton aria-label="settings">
-            {/* <MoreVertIcon /> */}
-          </IconButton>
-        }
+
         title={name}
         subheader={email}
       />
